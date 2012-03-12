@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - Alle Bücher{% endblock %}
+
+{% block content %}
+<h2>Alle Bücher</h2>
+<ul>
+    {% for book in object_list %}
+    <li><a href="/book/{{ book.slug }}">{{ book.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

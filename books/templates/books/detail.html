@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ object.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+{% if object.author  %}
+  <p>Autor:  {{ object.author }} </p>
+{% endif %}
+
+{% if object.publisher %}
+  <p>Verlag:  {{ object.publisher  }} </p>
+{% endif %}
+
+{% if object.isbn10 %}
+  <p>ISBN-10:  {{ object.isbn10  }} </p>
+{% endif %}
+
+{% if object.isbn13 %}
+  <p>ISBN-13:  {{ object.isbn13  }} </p>
+{% endif %}
+
+{% endblock %}
