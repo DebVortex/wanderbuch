@@ -17,6 +17,11 @@ legend { border-bottom: 2px solid #f80; font-size: 140%; padding-left: .5em;}
 	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.75)!important;
 }
 .btn-warning:active,.btn-warning.active{background-color:#FF8800 \9;}
+
+.required {
+    color: #FF0000;
+    font-weight: bold;
+}
 /***********************
  * Quotes and Formular *
  ***********************/
@@ -41,3 +46,5 @@ textarea {width: 100%;}
  **********/
 footer div div ul { margin-bottom: 0px!important;}
 .centeredDiv{ margin: auto auto; text-align: left; width: 507px;}
+
+#collapseOne { width: 500px;}

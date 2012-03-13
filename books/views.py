@@ -1,9 +1,10 @@
-from django.http import HttpResponse
-from django.http import Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 from django.template import Context, loader
+from django.shortcuts import render
 
 from books.models import Book, Quote
+from books.forms import BookForm
 
 import random
 
@@ -22,15 +23,27 @@ def index(request):
     })
     return HttpResponse(template.render(context))
 
-def addBookView(request):
-    quote = getRandomQuote()
-    context = Context({
-        'quote': quote,
-    })
-    template = loader.get_template('books/add_book.html')
-    return HttpResponse(template.render(context))
+def addBook(request):
+    if request.method == 'POST':
+        form = BookForm(data=request.POST)
+        if form.is_valid():
+            book = form.save()
+            return HttpResponseRedirect(book.get_absolute_url())
+    else:
+        form = BookForm()
+        return render(request, 
+            'books/add_book.html',
+            {
+                'form': form, 
+                'add': True, 
+                'quote': getRandomQuote()
+            })
 
-def addLocationView(request):
+def addLocation(request, slug):
+    try:
+        book = Book.objects.get(slug=slug)
+    except Book.DoesNotExist:
+        raise Http404
     quote = getRandomQuote()
     context = Context({
         'quote': quote,

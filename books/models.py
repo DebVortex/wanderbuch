@@ -10,10 +10,10 @@ CHARS = string.ascii_uppercase + string.digits
 
 class Book(models.Model):
     title = models.CharField('Titel', max_length=255)
-    isbn10 = models.CharField('ISBN-10', max_length=13, blank=True)
-    isbn13 = models.CharField('ISBN-13', max_length=13, blank=True)
     author = models.CharField('Autor', max_length=100, blank=True)
     publisher = models.CharField('Verlag', max_length=100, blank=True)
+    isbn10 = models.CharField('ISBN-10', max_length=13, blank=True)
+    isbn13 = models.CharField('ISBN-13', max_length=13, blank=True)
     date_created = models.DateTimeField(editable=False)
     date_updated = models.DateTimeField(editable=False)
     book_uuid = models.CharField(max_length=12, editable=False, unique=True)
@@ -62,6 +62,10 @@ class Book(models.Model):
             self.slug = self.book_uuid.lower()
         self.date_updated = datetime.datetime.now()
         super(Book, self).save(*args, **kwargs)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('book_detail', (), {'slug': self.slug})
 
 class Location(models.Model):
     town = models.CharField('Stadt', max_length=255)

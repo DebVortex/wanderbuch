@@ -5,6 +5,7 @@
   <title>{% block title %}Wanderbuch{% endblock %}</title>
   <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/base.css"/>
   <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/bootstrap.min.css">
+
   <style type="text/css">
     [class^="icon-"],[class*=" icon-"]{
 	    display:inline-block;
@@ -32,8 +33,9 @@
     .icon-book{background-position:-48px -48px;}
     .icon-backward{background-position:-240px -72px;}
     .icon-plus-sign{background-position:0 -96px;}
+    .icon-map-marker{background-position:-24px -72px;}
+    .icon-asterisk{background-position:-456px -96px;}
     .white-icon-plus-sign{background-position:0 -96px;}
-
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -49,10 +51,10 @@
           <ul class="nav">
             <li class="divider-vertical"></li>
             <li class=""><a href="/">Hauptseite</a></li>
-            <li><a href="#">Die Idee</a></li>
-            <li><a href="#">Buch eintragen</a></li>
-            <li><a href="#">Bücherliste</a></li>
-            <li><a href="#">Hintergründe zum Urheberrecht</a></li>
+            <li><a href="{{ SITE_URL }}/idea">Die Idee</a></li>
+            <li><a href="{{ SITE_URL }}/add/book">Buch eintragen</a></li>
+            <li><a href="{{ SITE_URL }}/booklist">Bücherliste</a></li>
+            <li><a href="{{ SITE_URL }}/copyright">Hintergründe zum Urheberrecht</a></li>
           </ul>  
         </div>
       </div>

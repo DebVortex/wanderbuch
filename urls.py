@@ -9,7 +9,11 @@ import os
 
 urlpatterns = patterns('',
     url(r'^$', 'wanderbuch.books.views.index', name='index'),
-    url(r'^book/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.bookdetail'),
+    url(r'^book/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.bookdetail', name='book_detail'),
+
+    url(r'^add/book/', 'wanderbuch.books.views.addBook'),
+    url(r'^add/location/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.addLocation'),
+
     url(r'^about/', 'wanderbuch.books.views.about'),
     url(r'^legal_notice/', 'wanderbuch.books.views.legalNotice'),
     url(r'^privacy/', 'wanderbuch.books.views.privacy'),

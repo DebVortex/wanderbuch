@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row">
   <div class="container well">
-    <div class="span12">
+    <div class="span8">
       <h2>{{ object.title }}</h2>
       {% if object.author  %}
       <p><strong>Autor:</strong>  {{ object.author }} </p>
@@ -22,6 +22,35 @@
       {% if object.isbn13 %}
       <p><strong>ISBN-13:</strong>  {{ object.isbn13  }} </p>
       {% endif %}
+    </div>
+    <div class="span3 well portlet">
+      <ul class="nav nav-list">
+        <li class="nav-header">
+          Dieses Buch war schon in...
+        </li>
+        {% if location_list %}
+        {% for location in location_list %}
+          <li>
+            <i class="icon-map-marker"></i>
+            {{ location.town }}
+            {% if location.town_district %}
+            , {{ location.town_district }}
+            {% endif %}
+          </li>
+          {% endfor %}
+        {% else %}
+          <li>
+            Dieses Buch war noch nirgend wo.
+          </li>
+        {% endif%}
+        <li class="divider"></li>
+        <li>
+          <a class="btn btn-warning" href="/add/location/{{ object.slug }}">
+            <i class="white-icon-plus-sign"></i>
+            Einen Ort hinzufügen...
+          </a>
+        </li>
+      </ul>
     </div>
     
     <div class="span12">

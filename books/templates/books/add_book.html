@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - ein Buch hinzufügen{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="container well">
+    <div class="span12">
+      <form action="{{ action_url }}" method="post" accept-charset="utf-8">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><button type="submit" class="btn btn-warning">Speichern</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
