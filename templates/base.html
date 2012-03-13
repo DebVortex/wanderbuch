@@ -6,6 +6,9 @@
   <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/base.css"/>
   <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/bootstrap.min.css">
 
+  <script language="JavaScript" src="{{ SITE_ROOT }}/static/javascript/jquery-1.7.1.min.js"></script>
+  <script language="JavaScript" src="{{ SITE_ROOT }}/static/javascript/bootstrap.min.js"></script>
+
   <style type="text/css">
     [class^="icon-"],[class*=" icon-"]{
 	    display:inline-block;
@@ -80,6 +83,14 @@
             </small>
           </blockquote>
         </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          <a class="close" data-dismiss="alert">×</a>
+          <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
       </header>
     </div>
   </div>

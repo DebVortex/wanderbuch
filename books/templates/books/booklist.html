@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - Bücherliste{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="container well">
+    <div class="span12">
+      <table class="table span11 table-striped">
+        <thead>
+          <tr>
+            <th>Titel</th>
+            <th>Autor</th>
+            <th>Verlag</th>
+            <th>Eindeutige Buch-ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <td><a href="/book/{{ book.slug }}"><i class="icon-book"></i>{{ book.title }}</a></td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.book_uuid }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

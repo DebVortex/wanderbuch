@@ -22,6 +22,7 @@ class Book(models.Model):
     class Meta:
         verbose_name = 'Buch'
         verbose_name_plural = 'Bücher'
+        ordering = ['-date_created']
 
     def __unicode__(self):
         return self.title

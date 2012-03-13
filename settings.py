@@ -50,6 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
+MESSAGE_STORAGE = (
+    'django.contrib.messages.storage.cookie.CookieStorage'
+)
 ROOT_URLCONF = 'wanderbuch.urls'
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),

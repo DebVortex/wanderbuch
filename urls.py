@@ -8,17 +8,20 @@ from settings import SITE_ROOT
 import os
 
 urlpatterns = patterns('',
+    # dynamic sites
     url(r'^$', 'wanderbuch.books.views.index', name='index'),
     url(r'^book/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.bookdetail', name='book_detail'),
+    url(r'^booklist/', 'wanderbuch.books.views.booklist', name='booklist'),
 
-    url(r'^add/book/', 'wanderbuch.books.views.addBook'),
-    url(r'^add/location/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.addLocation'),
+    url(r'^add/book/', 'wanderbuch.books.views.addBook', name='book_add'),
+    url(r'^add/location/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.addLocation', name='location_add'),
+    
+    # static sites
+    url(r'^about/', 'wanderbuch.books.views.about', name='about'),
+    url(r'^legal_notice/', 'wanderbuch.books.views.legalNotice', name='legal_notice'),
+    url(r'^privacy/', 'wanderbuch.books.views.privacy', name='privacy'),
 
-    url(r'^about/', 'wanderbuch.books.views.about'),
-    url(r'^legal_notice/', 'wanderbuch.books.views.legalNotice'),
-    url(r'^privacy/', 'wanderbuch.books.views.privacy'),
-
-    # static
+    # static files
     url(r'^static/(?P<path>.*)', 'django.views.static.serve', 
         {'document_root': 'static'}),
     
