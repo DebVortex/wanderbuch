@@ -3,21 +3,35 @@
 {% block title %}{{ block.super }} - {{ object.title }}{% endblock %}
 
 {% block content %}
-<h2>{{ object.title }}</h2>
-{% if object.author  %}
-  <p>Autor:  {{ object.author }} </p>
-{% endif %}
+<div class="row">
+  <div class="container well">
+    <div class="span12">
+      <h2>{{ object.title }}</h2>
+      {% if object.author  %}
+      <p><strong>Autor:</strong>  {{ object.author }} </p>
+      {% endif %}
 
-{% if object.publisher %}
-  <p>Verlag:  {{ object.publisher  }} </p>
-{% endif %}
+      {% if object.publisher %}
+      <p><strong>Verlag:</strong>  {{ object.publisher  }} </p>
+      {% endif %}
 
-{% if object.isbn10 %}
-  <p>ISBN-10:  {{ object.isbn10  }} </p>
-{% endif %}
+      {% if object.isbn10 %}
+      <p><strong>ISBN-10:</strong>  {{ object.isbn10  }} </p>
+      {% endif %}
 
-{% if object.isbn13 %}
-  <p>ISBN-13:  {{ object.isbn13  }} </p>
-{% endif %}
+      {% if object.isbn13 %}
+      <p><strong>ISBN-13:</strong>  {{ object.isbn13  }} </p>
+      {% endif %}
+    </div>
+    
+    <div class="span12">
+      <p><strong>Eindeutige Buch-ID: {{ object.book_uuid }}</strong></p>
+    </div>
+
+    <div class="span12">
+      <a href="/"><i class="icon-backward"></i> Zurück zur Startseite</a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -1,11 +1,105 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>{% block title %}Wanderbuch{% endblock %}</title>
+  <title>{% block title %}Wanderbuch{% endblock %}</title>
+  <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/base.css"/>
+  <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/bootstrap.min.css">
+  <style type="text/css">
+    [class^="icon-"],[class*=" icon-"]{
+	    display:inline-block;
+	    width:14px;height:14px;
+	    line-height:14px;
+	    vertical-align:text-top;
+	    background-image:url("{{ SITE_ROOT }}/static/images/icons.png");
+	    background-position:14px 14px;
+	    background-repeat:no-repeat;
+	    *margin-right:.3em;
+	}
+  [class^="white-icon-"],[class*=" white-icon-"]{
+      display:inline-block;
+      width:14px;height:14px;
+      line-height:14px;
+      vertical-align:text-top;
+      background-image:url("{{ SITE_ROOT }}/static/images/icons-white.png");
+      background-position:14px 14px;
+      background-repeat:no-repeat;
+      *margin-right:.3em;
+  }
+	[class^="icon-"]:last-child,[class*=" icon-"]:last-child{
+		*margin-left:0;
+	}
+    .icon-book{background-position:-48px -48px;}
+    .icon-backward{background-position:-240px -72px;}
+    .icon-plus-sign{background-position:0 -96px;}
+    .white-icon-plus-sign{background-position:0 -96px;}
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
 <body>
-    <h1>Wanderbuch</h1>
-    {% block content %}{% endblock %}
+  
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">
+            Wanderbücher
+          </a>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            <li class=""><a href="/">Hauptseite</a></li>
+            <li><a href="#">Die Idee</a></li>
+            <li><a href="#">Buch eintragen</a></li>
+            <li><a href="#">Bücherliste</a></li>
+            <li><a href="#">Hintergründe zum Urheberrecht</a></li>
+          </ul>  
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="container well">
+      <header>  
+        <div class="jumbotron subhead">
+          <h1>Der Piraten Wanderbücher</h1>
+          <blockquote>
+            {% if quote.text %}
+              {{ quote.text }}
+            {% else %}
+              In Büchern liegt die Seele aller gewesenen Zeit.
+            {% endif %}
+            <small>
+              {% if quote.author %}
+                {{ quote.author}}
+              {% else %}
+                Thomas Carlyle
+              {% endif %}
+            </small>
+          </blockquote>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  {% block content %}
+  {% endblock %}
+  
+  <footer>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="centeredDiv">
+          <div class="container">
+            <ul class="nav nav-pills">
+              <li><a href="{{ SITE_ROOT }}/legal_notice">Impressum</a></li>
+              <li><a href="http://www.piratenpartei.de">Piratenpartei Deutschland</a></li>
+              <li><a href="{{ SITE_ROOT }}/privacy">Datenschutz</a></li>
+              <li><a href="{{ SITE_ROOT }}/about">Über das Projekt</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

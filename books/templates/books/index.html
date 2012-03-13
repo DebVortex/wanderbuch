@@ -1,12 +1,56 @@
 {% extends "base.html" %}
 
-{% block title %}{{ block.super }} - Alle Bücher{% endblock %}
+{% block title %}{{ block.super }}{% endblock %}
 
 {% block content %}
-<h2>Alle Bücher</h2>
-<ul>
+<div class="row">
+  <div class="container well">
+    <div class="span8">
+      <h2>Überschrift Level 2</h2>
+      <p>
+        Ein Absatz mit Blindtext, der in der Finalen Version mit sinnvollen Inhalten gefüllt werden sollte. Als alter Setzer bevorzuge ich selbstredend Blocksatz, aber ich würde mit mir streiten lassen. Immerhin wird das hier eine Webseite, keine <i>major reference work</i>. 
+  </p>
+  <p>
+    Ein neuer Absatz mit Blindtext um verschiedene auszeichnungen zu prüfen. Ich habe den eigentlichen Text-bereich etwas künstlich verkleinert. alles, was mehr als 90 Zeichen pro Zeile sind, ist eh schlecht für den Lesefluss. Falls das jemand schlecht findet, soll er oder sie bei der css-Klasse <tt>content</tt> die max-width erweitern oder ganz wegnehmen. Noch ein <a href="http://www.lupino.org">Link auf den Designer</a>. <b>bold faced</b> und <strong>strong</strong>; <i>italic</i> und <em>emphasised</em>
+  </p>
+
+  <h3>Da aber oben im Header schon eine Level 1-Überschrift zu finden ist,</h3>
+  <p>
+      Mal schauen, vielleicht können wir ja auf der Leipziger Buchmesse noch den ein oder anderen veröffentlichenswerten O-Ton abgreifen. Dieser könnte dann in der Form verwendung finden, wie wir es hier sehen:
+  </p>
+  <blockquote>
+    Wir haben das Internetzeitalter verpennt. Das ist schlecht für unser Geschäft, aber dafür haben wir Einfluss um das grade zu biegen. 
+
+    Außerdem, wenn wir nicht so einen Stress wegen Urheberrecht machen würden, würde es so Leute wie die von der Piratenpartei wahrscheinlich auch nicht geben. Also verdankt
+    ihr eure Existenz de facto uns.<small>Don Contentido, <br />Pate der Content-Mafia</small>
+  </blockquote>
+  <p>
+    Also an sich eine Tolle Sache. Nochmal die Ursachen für dieses und jenes:
+  </p>
+          
+  <h4>Fangen die eigentlichen Überschriften auf Level 2 an</h4>
+  <p>
+    Und das ist auch gut so, denn
+  </p>
+  <p>
+    So, wie ich gehört habe, soll auf diese Webseite noch das ein oder andere Formular, hier also Lupinos HTML-Formularbaukasten:
+  </p>
+  <p>
+    Den Rest würde ich auf standard-bootstrap-Niveau lassen. falls keine Einwände kommen.
+  </p>
+</div>
+<div class="span3 well portlet">
+  <ul class="nav nav-list">
+    <li class="nav-header">
+      kürzlich hinzugefügte Bücher
+    </li>
     {% for book in object_list %}
-    <li><a href="/book/{{ book.slug }}">{{ book.title }}</a></li>
+    <li><a href="/book/{{ book.slug }}"><i class="icon-book"></i>{{ book.title }}</a></li>
     {% endfor %}
-</ul>
+    <li class="divider"></li>
+    <li><a href="" class="btn btn-warning"><i class="white-icon-plus-sign"></i> Ein neues Buch hinzufügen</a></li>
+  </ul>
+</div>
+</div>
+</div>
 {% endblock %}

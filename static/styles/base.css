@@ -1,0 +1,43 @@
+a {color: #a60; font-weight: bold; }
+a:hover {color: #930; font-weight: bold; }
+
+.subhead h1 {font-size: 54px;}
+.jumbotron h1 {font-weight: bold; letter-spacing: -1px; line-height: 1; margin-bottom: 9px;}
+
+.portlet { 
+    border-left: 1px solid rgba(255, 136, 0, 0.5)!important;
+    border-bottom: 1px solid rgba(255, 136, 0, 0.5)!important;
+    border-top: 0.5px solid rgba(255, 136, 0, 0.5)!important;
+    border-right: 0.5px solid rgba(255, 136, 0, 0.5)!important;
+} 
+body { padding-top: 60px;}
+legend { border-bottom: 2px solid #f80; font-size: 140%; padding-left: .5em;}
+
+.btn-warning:hover {
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.75)!important;
+}
+.btn-warning:active,.btn-warning.active{background-color:#FF8800 \9;}
+/***********************
+ * Quotes and Formular *
+ ***********************/
+
+blockquote {
+    border-left:  3px solid #f80!important; 
+    border-bottom:  1px solid #f80!important; 
+    font-style: italic; 
+    margin: 1em; 
+    -webkit-border-radius: 3px;  
+    -moz-border-radius: 3px; 
+    border-radius: 3px;
+}
+blockquote > small {font-style: normal; font-variant: small-caps; text-align: right; font-size: 90%; 
+    color: #FF8800!important;
+}
+input { height: 2em; }
+textarea {width: 100%;}
+
+/**********
+ * Footer *
+ **********/
+footer div div ul { margin-bottom: 0px!important;}
+.centeredDiv{ margin: auto auto; text-align: left; width: 507px;}

@@ -22,10 +22,10 @@ LANGUAGE_CODE = 'de'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
 MEDIA_URL = ''
 STATIC_ROOT = ''
-STATIC_URL = '/static/'
+STATIC_URL = 'static'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
