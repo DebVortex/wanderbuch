@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Wanderbuch - {{ book.title }}</title>
+    <link type="text/css" rel="stylesheet" href="{{ SITE_ROOT }}/static/styles/print.css"/>
+  </head>
+  <body>
+    <div class="justifiedText">
+      Hallo, <br/>
+      <br/>
+      ich bin ein Wanderbuch. <br/>
+      Wenn du mich gelesen hast <br/>
+      lege mich doch einfach an <br/>
+      einen gut besuchten Ort <br/>
+      und teile mich mit  <br/>
+      anderen Menschen oder <br />
+      schick mich auf eine Reise. <br />
+      <br />
+      Danke! <br/>
+      <br/>
+      Mehr Informationen auf: <br/>
+      <br />
+      <small><b>http://wanderbuch.piraten-sachsen.de</b></small><br/>
+      <br>
+      <div class="book_uuid">
+        Eindeutige Buch-ID:<br>
+        <b>{{ book.book_uuid }}</b>
+      </div>
+    </div
+  </body>
+</html>

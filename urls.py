@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # dynamic sites
     url(r'^$', 'wanderbuch.books.views.index', name='index'),
     url(r'^book/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.bookdetail', name='book_detail'),
+    url(r'^book/print/(?P<slug>[-\w]+)/$', 'wanderbuch.books.views.bookPrint', name='book_print'),
     url(r'^booklist/', 'wanderbuch.books.views.booklist', name='booklist'),
 
     url(r'^add/book/', 'wanderbuch.books.views.addBook', name='book_add'),

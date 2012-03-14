@@ -1,0 +1,29 @@
+body {
+	margin: 0 auto;
+	width: 500px;
+}
+
+.justifiedText {
+    margin: 2em;
+    padding: 2em;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #000000;
+    text-align: justify;
+    width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.book_uuid {
+    padding: 1em;
+    background-color: #DDDDDD;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000000;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

@@ -22,6 +22,7 @@
       {% if object.isbn13 %}
       <p><strong>ISBN-13:</strong>  {{ object.isbn13  }} </p>
       {% endif %}
+      <p><a class="btn btn-warning" href="{{ ROOT_SITE }}/book/print/{{ object.slug }}">Druckvorlage</a></p>
     </div>
     <div class="span3 well portlet">
       <ul class="nav nav-list">

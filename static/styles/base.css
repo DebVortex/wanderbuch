@@ -22,6 +22,39 @@ legend { border-bottom: 2px solid #f80; font-size: 140%; padding-left: .5em;}
     color: #FF0000;
     font-weight: bold;
 }
+
+.book_id_search_form {
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 1em;
+    font-size: 150%;
+}
+
+#minus {
+    font-size: 200%;
+}
+
+#id_search_button {
+    margin-top: -8px;
+}
+
+a.wanderbuch_id, a.wanderbuch_id:hover {
+    border-bottom: 1px dotted #333333;
+    text-decoration: none;
+    color: #333333;
+}
+
+.suffixfield {
+    width: 80px!important;
+}
+
+.book_uuid_field {
+    width: 75px;
+    font-weight: bold;
+    font-size: 165%;
+    text-align: center;
+}
+
 /***********************
  * Quotes and Formular *
  ***********************/

@@ -1,9 +1,7 @@
 # encoding: utf-8
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-
 from django.template import Context, loader
 from django.shortcuts import render
-
 from django.contrib import messages
 
 from books.models import Book, Quote
@@ -17,6 +15,20 @@ def getRandomQuote():
         return quotes[random.randrange(0, quotes.count())]
 
 def index(request):
+    prefix = None
+    suffix = None
+    if request.GET.has_key('book_preffix'):
+        prefix = request.GET['book_preffix'].upper()
+    if request.GET.has_key('book_suffix'):
+        suffix = request.GET['book_suffix'].upper()
+    if prefix and suffix:
+        try:
+            import pdb;pdb.set_trace()
+            book = Book.objects.get(book_uuid = prefix + "-" + suffix)
+            return HttpResponseRedirect(book.get_absolute_url())
+        except Book.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'Fehler! Der Buche mit der ID ' +\
+                prefix + "-" + suffix +' konnte nicht gefunden werden')
     books = Book.objects.all()
     books.reverse()
     template = loader.get_template('books/index.html')
@@ -67,6 +79,15 @@ def bookdetail(render, slug):
         raise Http404
     template = loader.get_template('books/detail.html')
     context = Context({'object': book})
+    return HttpResponse(template.render(context))
+
+def bookPrint(render, slug):
+    try:
+        book = Book.objects.get(slug=slug)
+    except Book.DoesNotExist:
+        raise Http404
+    template = loader.get_template('books/book_print.html')
+    context = Context({'book': book})
     return HttpResponse(template.render(context))
 
 def booklist(render):
