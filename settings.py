@@ -17,6 +17,7 @@ DATABASES = {
         'PORT': '',
     }
 }
+DOMAIN = 'http://wanderbuch.piraten-sachsen.de'
 TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'de'
 SITE_ID = 1

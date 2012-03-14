@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^about/', 'wanderbuch.books.views.about', name='about'),
     url(r'^legal_notice/', 'wanderbuch.books.views.legalNotice', name='legal_notice'),
     url(r'^privacy/', 'wanderbuch.books.views.privacy', name='privacy'),
+    url(r'^idea/', 'wanderbuch.books.views.idea', name='idea'),
 
     # static files
     url(r'^static/(?P<path>.*)', 'django.views.static.serve', 

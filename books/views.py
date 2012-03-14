@@ -4,10 +4,13 @@ from django.template import Context, loader
 from django.shortcuts import render
 from django.contrib import messages
 
-from books.models import Book, Quote
-from books.forms import BookForm
+from books.models import Book, Quote, Location
+from books.forms import BookForm, LocationForm
+
+from settings import DOMAIN
 
 import random
+
 
 def getRandomQuote():
     quotes = Quote.objects.all()
@@ -61,16 +64,32 @@ def addBook(request):
             })
 
 def addLocation(request, slug):
+    if request.method == 'POST':
+        form = LocationForm(data=request.POST)
+        if form.is_valid():
+            location = form.save()
+            book = location.book_uuid
+            return HttpResponseRedirect(book.get_absolute_url())
+        else:
+            messages.add_message(request, messages.ERROR, 'Fehler! Es muss eine gültige Buch-ID ' +\
+                ' und wenigstens eine Stadt eingetragen werden.')
+            return HttpResponseRedirect('/add/location/'+slug)
     try:
         book = Book.objects.get(slug=slug)
     except Book.DoesNotExist:
         raise Http404
     quote = getRandomQuote()
-    context = Context({
-        'quote': quote,
-    })
-    template = loader.get_template('books/add_location.html')
-    return HttpResponse(template.render(context))
+    form = LocationForm()
+    return render(
+        request,
+        'books/add_location.html',
+        {
+            'form': form,
+            'add': True,
+            'quote': quote,
+            'uuid': book.book_uuid,
+        }
+    )
 
 def bookdetail(render, slug):
     try:
@@ -78,7 +97,8 @@ def bookdetail(render, slug):
     except Book.DoesNotExist:
         raise Http404
     template = loader.get_template('books/detail.html')
-    context = Context({'object': book})
+    location_list = Location.objects.filter(book_uuid=book)
+    context = Context({'object': book, 'location_list': location_list})
     return HttpResponse(template.render(context))
 
 def bookPrint(render, slug):
@@ -87,7 +107,7 @@ def bookPrint(render, slug):
     except Book.DoesNotExist:
         raise Http404
     template = loader.get_template('books/book_print.html')
-    context = Context({'book': book})
+    context = Context({'book': book, 'DOMAIN': DOMAIN})
     return HttpResponse(template.render(context))
 
 def booklist(render):
@@ -108,6 +128,14 @@ def about(request):
         'quote': quote,
     })
     template = loader.get_template('books/about.html')
+    return HttpResponse(template.render(context))
+
+def idea(request):
+    quote = getRandomQuote()
+    context = Context({
+        'quote': quote,
+    })
+    template = loader.get_template('books/idea.html')
     return HttpResponse(template.render(context))
 
 def legalNotice(request):
