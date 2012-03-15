@@ -26,7 +26,6 @@ def index(request):
         suffix = request.GET['book_suffix'].upper()
     if prefix and suffix:
         try:
-            import pdb;pdb.set_trace()
             book = Book.objects.get(book_uuid = prefix + "-" + suffix)
             return HttpResponseRedirect(book.get_absolute_url())
         except Book.DoesNotExist:
@@ -50,18 +49,15 @@ def addBook(request):
             #messages.add_message(request, messages.SUCCESS, 'Das Buch "' + book.title +\
             #    '" wurde erfolgreich angelegt.')
             return HttpResponseRedirect(book.get_absolute_url())
-        else:
-            messages.add_message(request, messages.ERROR, 'Fehler! Der Titel des Buches muss ausgefüllt sein.')
-            return HttpResponseRedirect('book_add')
     else:
         form = BookForm()
-        return render(request, 
-            'books/add_book.html',
-            {
-                'form': form, 
-                'add': True, 
-                'quote': getRandomQuote()
-            })
+    return render(request, 
+        'books/add_book.html',
+        {
+            'form': form, 
+            'add': True, 
+            'quote': getRandomQuote()
+        })
 
 def addLocation(request, slug):
     if request.method == 'POST':
@@ -128,6 +124,14 @@ def about(request):
         'quote': quote,
     })
     template = loader.get_template('books/about.html')
+    return HttpResponse(template.render(context))
+
+def copyright(request):
+    quote = getRandomQuote()
+    context = Context({
+        'quote': quote,
+    })
+    template = loader.get_template('books/copyright.html')
     return HttpResponse(template.render(context))
 
 def idea(request):
