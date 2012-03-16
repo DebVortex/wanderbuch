@@ -42,7 +42,7 @@ urlpatterns = patterns('',
     url(r'^idea/',
         'wanderbuch.books.views.idea',
         name='idea'),
-    url(r'copyright/',
+    url(r'^copyright/',
         'wanderbuch.books.views.copyright',
         name='copyright'),
 
